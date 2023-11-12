@@ -46,7 +46,19 @@ export class AppComponent {
             console.error(err);
           
         })
-    
+
+     this.planingService.addTeacher({
+       teacherId: 0,
+       firstName: '',
+       email: '',
+       phone: 0,
+       lastName: '',
+       password: '',
+       role: ''
+     },1)
+     
+
+
         this.planingService.addMatter({
           matterId: 0,
           name: 'Cloud data',
@@ -59,6 +71,7 @@ export class AppComponent {
             console.error(err);
           
         })
+
         this.planingService.addMatter({
           matterId: 0,
           name: 'Micro Service',
@@ -97,50 +110,38 @@ export class AppComponent {
             console.error(err);
           
         })
-    
+
         this.planingService.addSpecialities({
           specialityId: 0,
           name: 'ICC',
           groupSize: 22
-        },1).subscribe(user => {
-    
+        },1).subscribe(speciality => {
         }, (err: any) => {
             console.error(err);
           
         })
     
-        this.planingService.addSpecialities({
-          specialityId: 0,
-          name: 'ICC',
-          groupSize: 22
-        },2).subscribe(user => {
+        this.planingService.addTeacher({
+          teacherId: 0,
+          firstName: 'Damien',
+          email: 'teacher@prof.com',
+          phone: 0,
+          lastName: 'cytech',
+          password: 'cool',
+          role: 'teacher'
+        },1)
+
+        this.planingService.addTeacher({
+          teacherId: 0,
+          firstName: 'Juan',
+          email: 'teacher@prof.com',
+          phone: 0,
+          lastName: 'cytech',
+          password: 'cool',
+          role: 'teacher'
+        },2)
     
-        }, (err: any) => {
-            console.error(err);
-          
-        })
-    
-        this.planingService.addSpecialities({
-          specialityId: 0,
-          name: 'ICC',
-          groupSize: 22
-        },3).subscribe(user => {
-          
-        }, (err: any) => {
-            console.error(err);
-          
-        })
-        
-        this.planingService.addSpecialities({
-          specialityId: 0,
-          name: 'ICC',
-          groupSize: 22
-        },4).subscribe(user => {
-    
-        }, (err: any) => {
-            console.error(err);
-          
-        })
+
         
     
       }
