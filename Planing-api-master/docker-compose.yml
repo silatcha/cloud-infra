@@ -1,0 +1,37 @@
+version: "3"
+services:
+  mysqldb:
+    image: mysql
+ 
+    networks:
+      - planing-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456789
+      - MYSQL_DATABASE=planing  
+    ports:
+      - 3307:3306
+
+
+
+  planing:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    image: spring-boot
+    environment:
+            - spring_datasource_url=jdbc:mysql://mysqldb/planing?autoreconnect=true&usessl=false
+            - spring_datasource_password=123456789
+            - spring_datasource_username=root
+    ports:
+      - "8081:8081"
+    networks:
+      - planing-mysql
+    restart: unless-stopped
+    depends_on:
+      - mysqldb
+   
+ 
+
+
+networks:
+  planing-mysql: 
