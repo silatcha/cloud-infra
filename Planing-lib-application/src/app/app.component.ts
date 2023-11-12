@@ -46,19 +46,7 @@ export class AppComponent {
             console.error(err);
           
         })
-
-     this.planingService.addTeacher({
-       teacherId: 0,
-       firstName: '',
-       email: '',
-       phone: 0,
-       lastName: '',
-       password: '',
-       role: ''
-     },1)
-     
-
-
+    
         this.planingService.addMatter({
           matterId: 0,
           name: 'Cloud data',
@@ -66,83 +54,175 @@ export class AppComponent {
           teachers: [],
           speciality: []
         }).subscribe(user => {
-    
-        }, (err: any) => {
-            console.error(err);
-          
-        })
+          this.planingService.addSpecialities({
+            specialityId: 0,
+            name: 'ICC',
+            groupSize: 22
+          },user.matterId).subscribe(user => {
+      
+          }, (err: any) => {
+              console.error(err);
+            
+          })
 
-        this.planingService.addMatter({
-          matterId: 0,
-          name: 'Micro Service',
-          coef: 3,
-          teachers: [],
-          speciality: []
-        }).subscribe(user => {
-    
-        }, (err: any) => {
-            console.error(err);
-          
-        })
-    
-        this.planingService.addMatter({
-          matterId: 0,
-          name: 'Rust',
-          coef: 3,
-          teachers: [],
-          speciality: []
-        }).subscribe(user => {
-    
-        }, (err: any) => {
-            console.error(err);
-          
-        })
-    
-        this.planingService.addMatter({
-          matterId: 0,
-          name: 'Cloud Infrastructure',
-          coef: 3,
-          teachers: [],
-          speciality: []
-        }).subscribe(user => {
-    
-        }, (err: any) => {
-            console.error(err);
-          
-        })
+          this.planingService.addTeacher({
+            teacherId: 0,
+            firstName: 'Kotti',
+            email: 'kotti@email.com',
+            phone: 0,
+            lastName: 'cytech',
+            password: 'cool',
+            role: 'teacher'
+          },user.matterId).subscribe(user => {
+      
+          }, (err: any) => {
+              console.error(err);
+            
+          })
 
-        this.planingService.addSpecialities({
-          specialityId: 0,
-          name: 'ICC',
-          groupSize: 22
-        },1).subscribe(speciality => {
         }, (err: any) => {
             console.error(err);
           
         })
-    
-        this.planingService.addTeacher({
-          teacherId: 0,
-          firstName: 'Damien',
-          email: 'teacher@prof.com',
-          phone: 0,
-          lastName: 'cytech',
-          password: 'cool',
-          role: 'teacher'
-        },1)
+        this.planingService.getSpecialities().subscribe(speciality=>{
 
-        this.planingService.addTeacher({
-          teacherId: 0,
-          firstName: 'Juan',
-          email: 'teacher@prof.com',
-          phone: 0,
-          lastName: 'cytech',
-          password: 'cool',
-          role: 'teacher'
-        },2)
-    
-
+          this.planingService.addMatter({
+            matterId: 0,
+            name: 'Micro Service',
+            coef: 3,
+            teachers: [],
+            speciality: [speciality[0]]
+          }).subscribe(user => {
+            this.planingService.addTeacher({
+              teacherId: 0,
+              firstName: 'Lucas',
+              email: 'lucas@email.com',
+              phone: 0,
+              lastName: 'cytech',
+              password: 'cool',
+              role: 'teacher'
+            },user.matterId).subscribe(user => {
         
+            }, (err: any) => {
+                console.error(err);
+              
+            })
+          }, (err: any) => {
+              console.error(err);
+            
+          })
+      
+          this.planingService.addMatter({
+            matterId: 0,
+            name: 'Rust',
+            coef: 3,
+            teachers: [],
+            speciality: [speciality[0]]
+          }).subscribe(user => {
+      
+
+            this.planingService.addTeacher({
+              teacherId: 0,
+              firstName: 'Damien',
+              email: 'damien@email.com',
+              phone: 0,
+              lastName: 'cytech',
+              password: 'cool',
+              role: 'teacher'
+            },user.matterId).subscribe(user => {
+        
+            }, (err: any) => {
+                console.error(err);
+              
+            })
+
+          }, (err: any) => {
+              console.error(err);
+            
+          })
+      
+          this.planingService.addMatter({
+            matterId: 0,
+            name: 'Cloud Infrastructure',
+            coef: 3,
+            teachers: [],
+            speciality: [speciality[0]]
+          }).subscribe(user => {
+      
+
+            this.planingService.addTeacher({
+              teacherId: 0,
+              firstName: 'Juan',
+              email: 'juan@email.com',
+              phone: 0,
+              lastName: 'cytech',
+              password: 'cool',
+              role: 'teacher'
+            },user.matterId).subscribe(user => {
+        
+            }, (err: any) => {
+                console.error(err);
+              
+            })
+
+
+          }, (err: any) => {
+              console.error(err);
+            
+          })
+      
+          
+        })
+        
+    
+
+        this.planingService.addRoom({
+          roomId: 0,
+          name: 'Amphi',
+          capacity: 500,
+          state: false
+        }).subscribe(user => {
+        
+        }, (err: any) => {
+            console.error(err);
+          
+        })
+        
+        this.planingService.addRoom({
+          roomId: 0,
+          name: 'E100',
+          capacity: 35,
+          state: false
+        }).subscribe(user => {
+        
+        }, (err: any) => {
+            console.error(err);
+          
+        })
+        
+        this.planingService.addRoom({
+          roomId: 0,
+          name: 'E109',
+          capacity: 35,
+          state: false
+        }).subscribe(user => {
+        
+        }, (err: any) => {
+            console.error(err);
+          
+        })
+
+        this.planingService.addRoom({
+          roomId: 0,
+          name: 'E211',
+          capacity: 90,
+          state: false
+        }).subscribe(user => {
+        
+        }, (err: any) => {
+            console.error(err);
+          
+        })
     
       }
 
